@@ -2,7 +2,13 @@ import 'normalize.css';
 import '../scss/index.scss';
 import gsap from 'gsap'
 
+const mobileBox = 75
+const desktopBox = 100
+const mobileScreenWidth = 767
+let pixelsDelta = window.innerWidth < mobileScreenWidth ? mobileBox : desktopBox
+
 let moveCounter = 0
+
 const counterElement =  document.querySelector('.puzzle-menu__moves-counter')
 const puzzleBox = document.querySelector('.puzzle__game-container')
 const puzzles = puzzleBox.querySelectorAll('.puzzle__puzzle-item')
@@ -40,28 +46,28 @@ function clickHandler(e) {
     let isEmptyElementOnBottom = chosenPuzzleIndex + 4 === emptyPuzzleIndex
 
     if (isEmptyElementOnLeft) {
-        timeLine.to(chosenPuzzleElement, {x: -100, duration: 0.15}).then(() => {
+        timeLine.to(chosenPuzzleElement, {x: -pixelsDelta, duration: 0.15}).then(() => {
             changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
         })
         timeLine.to(chosenPuzzleElement, {x: 0, duration: 0})
     }
 
     if (isEmptyElementOnRight) {
-        timeLine.to(chosenPuzzleElement, {x: 100, duration: 0.15}).then(() => {
+        timeLine.to(chosenPuzzleElement, {x: pixelsDelta, duration: 0.15}).then(() => {
             changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
         })
         timeLine.to(chosenPuzzleElement, {x: 0, duration: 0})
     }
 
     if (isEmptyElementOnTop) {
-        timeLine.to(chosenPuzzleElement, {y: -100, duration: 0.15}).then(() => {
+        timeLine.to(chosenPuzzleElement, {y: -pixelsDelta, duration: 0.15}).then(() => {
             changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
         })
         timeLine.to(chosenPuzzleElement, {y: 0, duration: 0})
     }
 
     if (isEmptyElementOnBottom) {
-        timeLine.to(chosenPuzzleElement, {y: 100, duration: 0.15}).then(() => {
+        timeLine.to(chosenPuzzleElement, {y: pixelsDelta, duration: 0.15}).then(() => {
             changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
         })
         timeLine.to(chosenPuzzleElement, {y: 0, duration: 0})
@@ -101,3 +107,8 @@ function checkWin(InitialArr, puzzlesArr) {
 }
 
 puzzleBox.addEventListener('click', clickHandler)
+
+window.addEventListener('resize', (e) => {
+    if (e.currentTarget.innerWidth < mobileScreenWidth) pixelsDelta = mobileBox
+    else pixelsDelta = desktopBox
+})
