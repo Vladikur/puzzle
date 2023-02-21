@@ -1,0 +1,21 @@
+## File-based project format:
+*.iws
+
+# IntelliJ project files
+.idea
+*.iml
+
+# build
+/dist
+/built
+/build
+/src/www
+
+/*.log
+
+# node js
+/node_modules
+/bower_components
+
+# mac
+.DS_Store

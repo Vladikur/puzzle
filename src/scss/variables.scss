@@ -1,0 +1,47 @@
+// Colors
+// See './utils/_colors.scss'
+
+// Typography
+// See './utils/_typography.scss'
+
+// Fonts
+$mainFont: 'Montserrat', 'Helvetica Neue', 'Arial';
+$systemFont: 'Helvetica Neue', 'Arial';
+
+// Responsive breakpoints
+$laptop: 1440px;
+$tablet: 1024px;
+$mobile: 767px;
+
+$fromLaptop: $laptop + 1px;
+$fromTablet: $tablet + 1px;
+$fromMobile: $mobile + 1px;
+
+// container
+$width_container: 128rem;
+$width_container_tablet: calc(100% - 8rem);
+$width_container_mobile: calc(100% - 4rem);
+
+// Scrollbar
+$customScrollbar: true;
+$customScrollbarWidth: 5px;
+$customScrollbarBorderRadius: 10px;
+$customScrollbarColor: rgba(black, 0.7);
+
+// Selection
+$customSelection: false;
+
+// Easing functions
+$easeDefault: cubic-bezier(0.32, 0.94, 0.6, 1);
+$easeOutBack: cubic-bezier(0.34, 1.56, 0.64, 1);
+$easeInBack: cubic-bezier(0.36, 0, 0.66, -0.56);
+
+// transition time
+$trTime: 0.3s;
+
+// Border radius
+$borderRadiusDefault: 0.8rem;
+
+// header height
+$desktopHeaderHeight: 10rem;
+$mobileHeaderHeight: 7rem;

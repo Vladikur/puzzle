@@ -1,0 +1,65 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  overscroll-behavior-y: none;
+  background: var(--app-background);
+}
+
+body {
+  @if $customScrollbar == true {
+    @include customScrollbar(
+        $customScrollbarWidth,
+        $customScrollbarBorderRadius,
+        $customScrollbarColor
+    );
+  }
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+}
+
+html {
+  @include colors;
+  @include rem;
+
+  --window-height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#app-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#header,
+#footer {
+  flex-shrink: 0;
+}
+
+#main {
+  flex: 1 0 auto;
+  padding-top: var(--main-gutter);
+}
+
+img {
+  display: block;
+}
+
+a,
+button {
+  cursor: pointer;
+}

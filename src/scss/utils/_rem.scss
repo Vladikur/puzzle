@@ -1,0 +1,19 @@
+@mixin rem {
+  font-size: 62.5% !important;
+
+  @media screen and (max-width: 767px) {
+    font-size: calc(10px + 13 * (100vw - 375px) / 447) !important;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: calc(10px + 4 * (100vw - 768px) / 255) !important;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    font-size: calc(8px + 2 * (100vw - 1024px) / (1440 - 1024)) !important;
+  }
+
+  //@media (min-width: 1441px) and (max-width: 1920px) {
+  //  font-size: calc(8px + 2 * (100vw - 1441px) / (1920 - 1441)) !important;
+  //}
+}

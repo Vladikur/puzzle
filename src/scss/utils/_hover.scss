@@ -1,0 +1,16 @@
+@mixin hover {
+  @media (min-width: $fromTablet) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// active only if element is hover and from tablet
+@mixin active {
+  @media (min-width: $fromTablet) {
+    &:hover:active {
+      @content;
+    }
+  }
+}

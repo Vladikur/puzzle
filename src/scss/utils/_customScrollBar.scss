@@ -1,0 +1,14 @@
+@mixin customScrollbar($width, $borderRadius, $color) {
+  &::-webkit-scrollbar {
+    width: $width; /* width of the entire scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent; /* color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $borderRadius; /* roundness of the scroll thumb */
+    background-color: $color; /* color of the scroll thumb */
+  }
+}

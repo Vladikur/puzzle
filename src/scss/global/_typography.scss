@@ -1,0 +1,65 @@
+body {
+  @include text;
+
+  font-family: $mainFont;
+}
+
+h1,
+._visually-h1,
+h2,
+._visually-h2,
+h3,
+._visually-h3,
+h4,
+._visually-h4,
+h5,
+._visually-h5,
+h6,
+._visually-h6 {
+}
+
+h1,
+._visually-h1 {
+  @include text-h1;
+}
+
+h2,
+._visually-h2 {
+  @include text-h2;
+}
+
+h3,
+._visually-h3 {
+  @include text-h3;
+}
+
+h4,
+._visually-h4 {
+  @include text-h4;
+}
+
+h5,
+._visually-h5 {
+  @include text-h5;
+}
+
+h6,
+._visually-h6 {
+  @include text-h6;
+}
+
+.text-lead {
+  @include text-lead;
+}
+
+.text-sm {
+  @include text-sm;
+}
+
+.text-btn {
+  @include text-btn;
+}
+
+.text-btn-sm {
+  @include text-btn-sm;
+}
