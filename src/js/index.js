@@ -7,6 +7,8 @@ const counterElement =  document.querySelector('.puzzle-menu__moves-counter')
 const puzzleBox = document.querySelector('.puzzle__game-container')
 const puzzles = puzzleBox.querySelectorAll('.puzzle__puzzle-item')
 
+const timeLine = gsap.timeline()
+
 const InitialArr =  [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
 const puzzlesArr =  [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
 
@@ -38,19 +40,31 @@ function clickHandler(e) {
     let isEmptyElementOnBottom = chosenPuzzleIndex + 4 === emptyPuzzleIndex
 
     if (isEmptyElementOnLeft) {
-        changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
+        timeLine.to(chosenPuzzleElement, {x: -100, duration: 0.15}).then(() => {
+            changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
+        })
+        timeLine.to(chosenPuzzleElement, {x: 0, duration: 0})
     }
 
     if (isEmptyElementOnRight) {
-        changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
+        timeLine.to(chosenPuzzleElement, {x: 100, duration: 0.15}).then(() => {
+            changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
+        })
+        timeLine.to(chosenPuzzleElement, {x: 0, duration: 0})
     }
 
     if (isEmptyElementOnTop) {
-        changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
+        timeLine.to(chosenPuzzleElement, {y: -100, duration: 0.15}).then(() => {
+            changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
+        })
+        timeLine.to(chosenPuzzleElement, {y: 0, duration: 0})
     }
 
     if (isEmptyElementOnBottom) {
-        changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
+        timeLine.to(chosenPuzzleElement, {y: 100, duration: 0.15}).then(() => {
+            changePuzzles(chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleIndex, chosenPuzzleIndex, chosenPuzzleData, emptyPuzzleData)
+        })
+        timeLine.to(chosenPuzzleElement, {y: 0, duration: 0})
     }
 }
 
@@ -68,7 +82,8 @@ function changePuzzles (chosenPuzzleElement, emptyPuzzleElement, emptyPuzzleInde
 
     moveCounter++
     counterElement.textContent = String(moveCounter)
-    console.log(checkWin(InitialArr, puzzlesArr))
+
+    checkWin(InitialArr, puzzlesArr)
 }
 
 function checkWin(InitialArr, puzzlesArr) {
@@ -80,7 +95,9 @@ function checkWin(InitialArr, puzzlesArr) {
         }
     })
 
-    return isWin
+    if (isWin) {
+        counterElement.innerHTML = "you won!"
+    }
 }
 
 puzzleBox.addEventListener('click', clickHandler)
