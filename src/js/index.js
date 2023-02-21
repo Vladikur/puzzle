@@ -9,9 +9,11 @@ let pixelsDelta = window.innerWidth < mobileScreenWidth ? mobileBox : desktopBox
 
 let moveCounter = 0
 
+const pictureButton =  document.querySelector('.puzzle-menu__button')
 const counterElement =  document.querySelector('.puzzle-menu__moves-counter')
 const puzzleBox = document.querySelector('.puzzle__game-container')
 const puzzles = puzzleBox.querySelectorAll('.puzzle__puzzle-item')
+const initialPicture = puzzleBox.querySelector('.puzzle__initial-image')
 
 const timeLine = gsap.timeline()
 
@@ -103,11 +105,20 @@ function checkWin(InitialArr, puzzlesArr) {
 
     if (isWin) {
         counterElement.innerHTML = "you won!"
+        initialPicture.classList.add('_visible')
     }
 }
 
-puzzleBox.addEventListener('click', clickHandler)
+function showPicture() {
+    initialPicture.classList.add('_visible')
 
+    setTimeout(() => {
+        initialPicture.classList.remove('_visible')
+    }, 2000)
+}
+
+puzzleBox.addEventListener('click', clickHandler)
+pictureButton.addEventListener('click', showPicture)
 window.addEventListener('resize', (e) => {
     if (e.currentTarget.innerWidth < mobileScreenWidth) pixelsDelta = mobileBox
     else pixelsDelta = desktopBox
